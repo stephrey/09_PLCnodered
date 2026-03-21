@@ -14,7 +14,7 @@ https://stevesnoderedguide.com/modbus-writing-data
 * WAGO serial interface manual 750-1652</br>
   https://www.wago.com/wagoweb/documentation/750/ger_manu/modules/m07501652_00000000_0de.pdf
 
-* WAGO IO-System product documentation
+* WAGO IO-System product documentation</br>
   https://www.wago.com/wagoweb/documentation/index_d.htm
 
 ## 2. Installation
