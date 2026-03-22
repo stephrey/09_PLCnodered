@@ -48,6 +48,17 @@ Login the Web Based Management (WBM)
 ![Enable-Docker](img/image04.png)
 </br></br>
 
+#### 2.1.1 Important
+
+> make sure the RUN-STOP-RESET button is switch to the RUN position
+  * Onboard operating switch: 
+    * START = modbusserver is running 
+    * STOP modbusserver is stopped
+
+> if the communication doesn't work properly
+  * If the kbus would not init: => stop container => activate runtime => deactivate runtime => start container
+    (This inits the kbus via runtime thread, watch kbus led: must be green)
+
 ### 2.2 Download and start "modbus server" Docker container
 
 https://hub.docker.com/r/wagoautomation/pfc-modbus-server
