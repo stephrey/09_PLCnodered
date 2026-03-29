@@ -160,7 +160,7 @@
         "id": "5572aa84d27dcad7",
         "type": "modbus-write",
         "z": "e542b9dd467ca141",
-        "name": "",
+        "name": "Write Digital Outputs",
         "showStatusActivities": false,
         "showErrors": false,
         "showWarnings": true,
@@ -173,7 +173,7 @@
         "keepMsgProperties": false,
         "delayOnStart": false,
         "startDelayTime": "",
-        "x": 720,
+        "x": 740,
         "y": 100,
         "wires": [
             [
@@ -280,7 +280,7 @@
         "id": "09bfd59f3c2a0b62",
         "type": "modbus-getter",
         "z": "e542b9dd467ca141",
-        "name": "",
+        "name": "Read Digital Inputs",
         "showStatusActivities": false,
         "showErrors": false,
         "showWarnings": true,
@@ -297,7 +297,7 @@
         "keepMsgProperties": false,
         "delayOnStart": false,
         "startDelayTime": "",
-        "x": 720,
+        "x": 730,
         "y": 360,
         "wires": [
             [
@@ -449,10 +449,11 @@
         "payload": "",
         "payloadType": "date",
         "x": 120,
-        "y": 1480,
+        "y": 1680,
         "wires": [
             [
-                "8ccb4f704934ad95"
+                "8ccb4f704934ad95",
+                "26f820364b218725"
             ]
         ]
     },
@@ -468,7 +469,7 @@
         "finalize": "",
         "libs": [],
         "x": 400,
-        "y": 1480,
+        "y": 1680,
         "wires": [
             [
                 "bad6c60ae3ac53d3",
@@ -490,7 +491,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1240,
-        "y": 1480,
+        "y": 1680,
         "wires": []
     },
     {
@@ -515,7 +516,8 @@
         "wires": [
             [
                 "d4d7feb95ead6397",
-                "2387e260e2e60c6b"
+                "2387e260e2e60c6b",
+                "54c6c766bfef71dd"
             ]
         ]
     },
@@ -590,7 +592,7 @@
         "delayOnStart": false,
         "startDelayTime": "",
         "x": 750,
-        "y": 1340,
+        "y": 1580,
         "wires": [
             [
                 "347cfff3df73bc38"
@@ -708,7 +710,7 @@
         "finalize": "",
         "libs": [],
         "x": 390,
-        "y": 1540,
+        "y": 1740,
         "wires": [
             [
                 "bad6c60ae3ac53d3",
@@ -738,10 +740,11 @@
         "payload": "",
         "payloadType": "date",
         "x": 120,
-        "y": 1540,
+        "y": 1740,
         "wires": [
             [
-                "31ab57b70035a9de"
+                "31ab57b70035a9de",
+                "561d495de4d99b03"
             ]
         ]
     },
@@ -763,7 +766,7 @@
         "delayOnStart": false,
         "startDelayTime": "",
         "x": 730,
-        "y": 1600,
+        "y": 1800,
         "wires": [
             [
                 "34aa9019900fd0cd"
@@ -795,7 +798,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 120,
-        "y": 1760,
+        "y": 1960,
         "wires": [
             [
                 "874cc52d82df1891"
@@ -824,7 +827,7 @@
         "delayOnStart": false,
         "startDelayTime": "",
         "x": 730,
-        "y": 1760,
+        "y": 1960,
         "wires": [
             [
                 "850c13265c4f4fb8"
@@ -848,7 +851,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1240,
-        "y": 1720,
+        "y": 1920,
         "wires": []
     },
     {
@@ -856,6 +859,23 @@
         "type": "debug",
         "z": "4dffc307d432aa7b",
         "name": "debug 18",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 1960,
+        "wires": []
+    },
+    {
+        "id": "34aa9019900fd0cd",
+        "type": "debug",
+        "z": "4dffc307d432aa7b",
+        "name": "debug 15",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -866,23 +886,6 @@
         "statusType": "auto",
         "x": 1240,
         "y": 1760,
-        "wires": []
-    },
-    {
-        "id": "34aa9019900fd0cd",
-        "type": "debug",
-        "z": "4dffc307d432aa7b",
-        "name": "debug 15",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1240,
-        "y": 1560,
         "wires": []
     },
     {
@@ -899,14 +902,14 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1240,
-        "y": 1620,
+        "y": 1820,
         "wires": []
     },
     {
         "id": "b3c0496be9054f9d",
         "type": "debug",
         "z": "4dffc307d432aa7b",
-        "name": "debug 4",
+        "name": "debug 3",
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -923,7 +926,7 @@
         "id": "1deccdd221146d6d",
         "type": "debug",
         "z": "4dffc307d432aa7b",
-        "name": "debug 3",
+        "name": "debug SB",
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -941,14 +944,14 @@
         "type": "function",
         "z": "4dffc307d432aa7b",
         "name": "Control Byte Mngt",
-        "func": "let ControlByte = 0;\nControlByte = ControlByte + (flow.get(\"CB_TR\") || 0) * 1;\nControlByte = ControlByte + (flow.get(\"CB_RA\") || 0) * 2;\nControlByte = ControlByte + (flow.get(\"CB_IR\") || 0) * 4;\nControlByte = ControlByte + (flow.get(\"CB_SC\") || 0) * 8;\nControlByte = ControlByte + (flow.get(\"CB_RC\") || 0) * 128;\n\nmsg.payload = [];\n\nmsg.payload[0] = ControlByte;\nreturn msg;",
+        "func": "let ControlByte = 0;\nlet OutputLen = 0;\n\nControlByte = ControlByte + ((flow.get(\"CB_TR\") || 0) * 1);\nControlByte = ControlByte + ((flow.get(\"CB_RA\") || 0) * 2);\nControlByte = ControlByte + ((flow.get(\"CB_IR\") || 0) * 4);\nControlByte = ControlByte + ((flow.get(\"CB_SC\") || 0) * 8);\nControlByte = ControlByte + ((flow.get(\"CB_RC\") || 0) * 128);\n\nOutputLen = flow.get(\"CB_OL\") || 0;\n\nmsg.payload = [];\n\nmsg.payload[0] = ControlByte;\nmsg.payload[1] = OutputLen;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 310,
-        "y": 1280,
+        "y": 1520,
         "wires": [
             [
                 "2e75a321caf0b43e",
@@ -994,7 +997,7 @@
         "id": "2e75a321caf0b43e",
         "type": "debug",
         "z": "4dffc307d432aa7b",
-        "name": "debug 11",
+        "name": "debug CB",
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -1004,7 +1007,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1240,
-        "y": 1280,
+        "y": 1520,
         "wires": []
     },
     {
@@ -1070,7 +1073,8 @@
         "y": 260,
         "wires": [
             [
-                "5ccf666f61cc968a"
+                "5ccf666f61cc968a",
+                "ded0d4c40cf9c5ec"
             ]
         ]
     },
@@ -1078,8 +1082,8 @@
         "id": "5ccf666f61cc968a",
         "type": "debug",
         "z": "4dffc307d432aa7b",
-        "name": "debug 5",
-        "active": true,
+        "name": "debug SB",
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1135,7 +1139,8 @@
         "y": 300,
         "wires": [
             [
-                "5ccf666f61cc968a"
+                "5ccf666f61cc968a",
+                "66f312a19060a034"
             ]
         ]
     },
@@ -1423,7 +1428,8 @@
         "y": 540,
         "wires": [
             [
-                "5ccf666f61cc968a"
+                "5ccf666f61cc968a",
+                "54a3c0c5b20444ad"
             ]
         ]
     },
@@ -1471,7 +1477,8 @@
         "y": 580,
         "wires": [
             [
-                "5ccf666f61cc968a"
+                "5ccf666f61cc968a",
+                "66f312a19060a034"
             ]
         ]
     },
@@ -1633,7 +1640,7 @@
         "id": "58e9733e2a50378d",
         "type": "debug",
         "z": "4dffc307d432aa7b",
-        "name": "debug 6",
+        "name": "debug TR",
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -1650,7 +1657,7 @@
         "id": "347cfff3df73bc38",
         "type": "debug",
         "z": "4dffc307d432aa7b",
-        "name": "debug 12",
+        "name": "debug 4",
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -1660,7 +1667,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1240,
-        "y": 1320,
+        "y": 1560,
         "wires": []
     },
     {
@@ -1782,7 +1789,7 @@
         "id": "8e70d32cfc3bceaf",
         "type": "debug",
         "z": "4dffc307d432aa7b",
-        "name": "debug 7",
+        "name": "debug RA",
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -1914,7 +1921,7 @@
         "id": "ae5ff52e85c319ee",
         "type": "debug",
         "z": "4dffc307d432aa7b",
-        "name": "debug 8",
+        "name": "debug IR",
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -2046,7 +2053,7 @@
         "id": "d3a7764e7a55d7c3",
         "type": "debug",
         "z": "4dffc307d432aa7b",
-        "name": "debug 9",
+        "name": "debug SC",
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -2160,7 +2167,7 @@
         "type": "function",
         "z": "4dffc307d432aa7b",
         "name": "Cmd CB_RC (Register communication)",
-        "func": "let bitValue = Number(msg.payload);\nflow.set(\"CB_RC\", bitValue);\nmsg.payload = bitValue;\nmsg.topic = \"CR_SC\";\nreturn msg;",
+        "func": "let bitValue = Number(msg.payload);\nflow.set(\"CB_RC\", bitValue);\nmsg.payload = bitValue;\nmsg.topic = \"CB_RC\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2178,7 +2185,7 @@
         "id": "2821af7c61a538f2",
         "type": "debug",
         "z": "4dffc307d432aa7b",
-        "name": "debug 10",
+        "name": "debug RC",
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -2195,16 +2202,17 @@
         "id": "2b51448b0930e629",
         "type": "debug",
         "z": "4dffc307d432aa7b",
-        "name": "debug 13",
+        "name": "debug 5",
         "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
         "x": 1240,
-        "y": 1360,
+        "y": 1600,
         "wires": []
     },
     {
@@ -2219,7 +2227,7 @@
         "finalize": "",
         "libs": [],
         "x": 350,
-        "y": 1600,
+        "y": 1800,
         "wires": [
             [
                 "0f3cc3e5f65ad4dd",
@@ -2249,11 +2257,173 @@
         "payload": "",
         "payloadType": "date",
         "x": 120,
-        "y": 1600,
+        "y": 1800,
         "wires": [
             [
-                "df921f91053d6ed3"
+                "df921f91053d6ed3",
+                "0988029b9716c1de"
             ]
+        ]
+    },
+    {
+        "id": "66f312a19060a034",
+        "type": "debug",
+        "z": "4dffc307d432aa7b",
+        "name": "debug Rx",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "ded0d4c40cf9c5ec",
+        "type": "debug",
+        "z": "4dffc307d432aa7b",
+        "name": "debug Tx",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "54a3c0c5b20444ad",
+        "type": "debug",
+        "z": "4dffc307d432aa7b",
+        "name": "debug RC",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "0988029b9716c1de",
+        "type": "function",
+        "z": "4dffc307d432aa7b",
+        "name": "OL = 0",
+        "func": "msg.payload = 0;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 1360,
+        "wires": [
+            [
+                "6c39489e32902c93"
+            ]
+        ]
+    },
+    {
+        "id": "26f820364b218725",
+        "type": "function",
+        "z": "4dffc307d432aa7b",
+        "name": "OL =11",
+        "func": "msg.payload = 11;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 1280,
+        "wires": [
+            [
+                "6c39489e32902c93"
+            ]
+        ]
+    },
+    {
+        "id": "561d495de4d99b03",
+        "type": "function",
+        "z": "4dffc307d432aa7b",
+        "name": "OL =8",
+        "func": "msg.payload = 8;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 1320,
+        "wires": [
+            [
+                "6c39489e32902c93"
+            ]
+        ]
+    },
+    {
+        "id": "6c39489e32902c93",
+        "type": "function",
+        "z": "4dffc307d432aa7b",
+        "name": "Cmd CB_OL ((Out length))",
+        "func": "let Value = Number(msg.payload);\nflow.set(\"CB_OL\", Value);\nmsg.payload = Value;\nmsg.topic = \"CB_OL\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 1280,
+        "wires": [
+            [
+                "8f27b2710ad84717"
+            ]
+        ]
+    },
+    {
+        "id": "8f27b2710ad84717",
+        "type": "debug",
+        "z": "4dffc307d432aa7b",
+        "name": "debug OL",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "54c6c766bfef71dd",
+        "type": "function",
+        "z": "4dffc307d432aa7b",
+        "name": "Manager Receiver",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 2080,
+        "wires": [
+            []
         ]
     }
 ]
