@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  pfc-modbus-server:
+    image: wagoautomation/pfc-modbus-server
+    container_name: pfc-modbus-server
+    restart: unless-stopped
+    privileged: true
+    init: true
+    ports:
+      - "502:502"
+    volumes:
+      - /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket

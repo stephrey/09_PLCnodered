@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  wago-node-red:
+    image: wagoautomation/node-red-cc100:1.0.0
+    container_name: wago-node-red
+    restart: unless-stopped
+    privileged: true
+    user: root
+    ports:
+      - "1880:1880"
+    volumes:
+      - node_red_user_data:/data
+
+volumes:
+  node_red_user_data:
