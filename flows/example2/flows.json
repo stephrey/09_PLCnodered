@@ -473,7 +473,7 @@
         "logIOActivities": false,
         "unitid": "1",
         "dataType": "HoldingRegister",
-        "adr": "20",
+        "adr": "0",
         "quantity": "12",
         "server": "51f065d175567b4e",
         "useIOFile": false,
