@@ -170,6 +170,12 @@ The PLC configuration contains
   ->  read/write digital inputs and outputs</br>
   ->  serial echo application, return all received ASCII char back</br>
 
+  Important:
+  When deploying via the WAGO Solution Platform using a Docker stack, it is important that both containers (pfc-modbus-server and node-red-cc100) are part of the same stack. This is necessary to enable communication between the two containers (so that both containers use the same Docker network).
+
+  Notice:
+  In the Node-RED flow, the name of the modbus-server container must be used as the hostname (for example, pfc-modbus-server:502)
+
 </br>
 
 ### 3.1 Import the flows in the Node-red environement
