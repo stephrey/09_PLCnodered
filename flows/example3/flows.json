@@ -1,0 +1,2749 @@
+[
+    {
+        "id": "5313347b4d751a59",
+        "type": "tab",
+        "label": "read k-bus config",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "f31c9ddb9c020cc4",
+        "type": "tab",
+        "label": "RW digital IO's",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "feb2971f8d04e998",
+        "type": "tab",
+        "label": "Serial Communication",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "51f065d175567b4e",
+        "type": "modbus-client",
+        "name": "",
+        "clienttype": "tcp",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "pfc-modbus-server",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": "9600",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": "1",
+        "commandDelay": "1",
+        "clientTimeout": "1000",
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": "2000",
+        "parallelUnitIdsAllowed": true,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "df0f90f8d4a7607d",
+        "type": "inject",
+        "z": "5313347b4d751a59",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 220,
+        "wires": [
+            [
+                "c685da9cdc466656"
+            ]
+        ]
+    },
+    {
+        "id": "c685da9cdc466656",
+        "type": "modbus-getter",
+        "z": "5313347b4d751a59",
+        "name": "",
+        "showStatusActivities": true,
+        "showErrors": true,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "unitid": "",
+        "dataType": "HoldingRegister",
+        "adr": "8240",
+        "quantity": "63",
+        "server": "51f065d175567b4e",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": true,
+        "keepMsgProperties": true,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 640,
+        "y": 220,
+        "wires": [
+            [
+                "220ee79585e89456"
+            ],
+            [
+                "ee08cd3eb6d28f11"
+            ]
+        ]
+    },
+    {
+        "id": "220ee79585e89456",
+        "type": "debug",
+        "z": "5313347b4d751a59",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "ee08cd3eb6d28f11",
+        "type": "debug",
+        "z": "5313347b4d751a59",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "37d4c17d4262f70c",
+        "type": "comment",
+        "z": "5313347b4d751a59",
+        "name": "",
+        "info": "0x2030 R \n1 … 65 Beschreibung der angeschlossenen I/O-Module (I/O-Modul 0...64) ",
+        "x": 120,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "3ebd322e13b33c73",
+        "type": "modbus-write",
+        "z": "f31c9ddb9c020cc4",
+        "name": "Write Digital Outputs",
+        "showStatusActivities": true,
+        "showErrors": true,
+        "showWarnings": true,
+        "unitid": "1",
+        "dataType": "MHoldingRegisters",
+        "adr": "12",
+        "quantity": "3",
+        "server": "51f065d175567b4e",
+        "emptyMsgOnFail": true,
+        "keepMsgProperties": true,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 740,
+        "y": 100,
+        "wires": [
+            [
+                "db9c318924860524"
+            ],
+            [
+                "9e293544bac1979a"
+            ]
+        ]
+    },
+    {
+        "id": "7166b21a2e85e423",
+        "type": "inject",
+        "z": "f31c9ddb9c020cc4",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 100,
+        "wires": [
+            [
+                "b93bd89de8e81dc9"
+            ]
+        ]
+    },
+    {
+        "id": "db9c318924860524",
+        "type": "debug",
+        "z": "f31c9ddb9c020cc4",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "9e293544bac1979a",
+        "type": "debug",
+        "z": "f31c9ddb9c020cc4",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "935d0a0359dfdbcf",
+        "type": "inject",
+        "z": "f31c9ddb9c020cc4",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 360,
+        "wires": [
+            [
+                "02144060a8813a03"
+            ]
+        ]
+    },
+    {
+        "id": "02144060a8813a03",
+        "type": "modbus-getter",
+        "z": "f31c9ddb9c020cc4",
+        "name": "Read Digital Inputs",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "unitid": "",
+        "dataType": "HoldingRegister",
+        "adr": "12",
+        "quantity": "1",
+        "server": "51f065d175567b4e",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 730,
+        "y": 360,
+        "wires": [
+            [
+                "11f6a2d1e417fa9a"
+            ],
+            [
+                "3f049bf50da38f04"
+            ]
+        ]
+    },
+    {
+        "id": "11f6a2d1e417fa9a",
+        "type": "debug",
+        "z": "f31c9ddb9c020cc4",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "3f049bf50da38f04",
+        "type": "debug",
+        "z": "f31c9ddb9c020cc4",
+        "name": "debug 4",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "b93bd89de8e81dc9",
+        "type": "function",
+        "z": "f31c9ddb9c020cc4",
+        "name": "Write all bit TRUE",
+        "func": "msg.payload = [0xFFFF, 0xFFFF, 0xFFFF];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 100,
+        "wires": [
+            [
+                "3ebd322e13b33c73",
+                "72acd2a02d9c5d57"
+            ]
+        ]
+    },
+    {
+        "id": "590254fa5cbb656a",
+        "type": "function",
+        "z": "f31c9ddb9c020cc4",
+        "name": "write all bit FALSE",
+        "func": "msg.payload = [0x0000, 0x0000, 0x0000];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "3ebd322e13b33c73",
+                "72acd2a02d9c5d57"
+            ]
+        ]
+    },
+    {
+        "id": "40d363fe14d6ef1b",
+        "type": "inject",
+        "z": "f31c9ddb9c020cc4",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 160,
+        "wires": [
+            [
+                "590254fa5cbb656a"
+            ]
+        ]
+    },
+    {
+        "id": "72acd2a02d9c5d57",
+        "type": "debug",
+        "z": "f31c9ddb9c020cc4",
+        "name": "debug 5",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "52fd38fc1580e104",
+        "type": "comment",
+        "z": "f31c9ddb9c020cc4",
+        "name": "",
+        "info": "<ul>\n    <li>Use the Modbus FC3 function to communicate </li>\n    \n    <li>If you're communicating with the WagoAppPlcModbus library, an offset of 20 must be used for the inputs</li>\n    <li>If you're communicating with the plc-modbus-server Docker container, the offset is 0</li>\n</ul>\n",
+        "x": 700,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "b841294cec17190c",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "0.2",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 90,
+        "y": 180,
+        "wires": [
+            [
+                "3f3eadc403eb5f82"
+            ]
+        ]
+    },
+    {
+        "id": "3f3eadc403eb5f82",
+        "type": "modbus-getter",
+        "z": "feb2971f8d04e998",
+        "name": "Read Serial Interface",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "0",
+        "quantity": "12",
+        "server": "51f065d175567b4e",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 320,
+        "y": 180,
+        "wires": [
+            [
+                "a9451496554802e4",
+                "9e4dcac7377c4858",
+                "0a19ac4976c9082c",
+                "e574dee9e7eb3a83"
+            ],
+            [
+                "09539b874e666380"
+            ]
+        ]
+    },
+    {
+        "id": "0a19ac4976c9082c",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "dec_to_hex",
+        "func": "msg.payload = msg.payload.map(n =>\n    \"0x\" + n.toString(16).padStart(4, \"0\")\n);\nmsg.topic = \"hexadecimal formated\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 100,
+        "wires": [
+            [
+                "d6fb640aa302e8a3"
+            ]
+        ]
+    },
+    {
+        "id": "43b8e3afad4e8447",
+        "type": "modbus-write",
+        "z": "feb2971f8d04e998",
+        "name": "Write Serial Interface",
+        "showStatusActivities": true,
+        "showErrors": true,
+        "showWarnings": true,
+        "unitid": "1",
+        "dataType": "MHoldingRegisters",
+        "adr": "0",
+        "quantity": "12",
+        "server": "51f065d175567b4e",
+        "emptyMsgOnFail": true,
+        "keepMsgProperties": true,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 760,
+        "y": 660,
+        "wires": [
+            [
+                "032f2fd0afb56acf"
+            ],
+            [
+                "ff1f718d1ad8b49a"
+            ]
+        ]
+    },
+    {
+        "id": "09539b874e666380",
+        "type": "debug",
+        "z": "feb2971f8d04e998",
+        "name": "MB read status",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1220,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "78589946a3fab172",
+        "type": "debug",
+        "z": "feb2971f8d04e998",
+        "name": "Serial Data In",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1220,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "2395f48dfd1d69a5",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Control Byte Mngt",
+        "func": "let ControlByte = 0;\nlet OutputLen = 0;\n\nControlByte += (flow.get(\"CB_TR\") || 0) * 1;\nControlByte += (flow.get(\"CB_RA\") || 0) * 2;\nControlByte += (flow.get(\"CB_IR\") || 0) * 4;\nControlByte += (flow.get(\"CB_SC\") || 0) * 8;\nControlByte += (flow.get(\"CB_RC\") || 0) * 128;\n\nOutputLen = flow.get(\"CB_OL\") || 0;\n\n// Forcer en 8 bits\nControlByte = ControlByte & 0xFF;\nOutputLen = OutputLen & 0xFF;\n\n// Conversion en mots 16 bits\nlet ControlWord = (OutputLen << 8) | ControlByte;\nControlWord = ControlWord & 0xFFFF;\n\nmsg.payload.unshift(ControlWord);\nmsg.topic = \"serial interface out-data\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 600,
+        "wires": [
+            [
+                "7701182ff446d348",
+                "43b8e3afad4e8447"
+            ]
+        ]
+    },
+    {
+        "id": "d6fb640aa302e8a3",
+        "type": "debug",
+        "z": "feb2971f8d04e998",
+        "name": "serial interface in (hex)",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1200,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "a9451496554802e4",
+        "type": "debug",
+        "z": "feb2971f8d04e998",
+        "name": "MB read data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1220,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "7701182ff446d348",
+        "type": "debug",
+        "z": "feb2971f8d04e998",
+        "name": "serial interface out",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1210,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "e574dee9e7eb3a83",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Status Byte Mngt",
+        "func": "//  Integer value received as input (diStatB for status byte)\nlet diStatB = Number(msg.payload[0]);\n\n// check the input format\nif (!Number.isInteger(diStatB)) {\n    node.warn(\"msg.payload isn't a valide integer\");\n    return Array(16).fill(null);\n}\n\n// force the value to remain 16 bits.\ndiStatB = diStatB & 0xFFFF;\n\nlet diPreviousStatB = flow.get(\"storedStatusByte\");\nlet outputs = Array(16).fill(null);  // key to handling multiple outputs in Node-RED\n\nif (diPreviousStatB !== diStatB) {\n    flow.set(\"storedStatusByte\", diStatB);\n    let In_Lenght = 0;\n\n    for (let i = 0; i < 16; i++) {\n        let bitValue = (diStatB >> i) & 0x01;\n\n        switch(i){\n            case 0:\n                flow.set(\"SB_TA\", bitValue);\n                outputs[i] = {\n                    payload: bitValue,\n                    bit: i,\n                    topic: \"SB_TA, transmit accepted\"\n                };\n                break;\n            case 1:\n                flow.set(\"SB_RR\", bitValue);\n                outputs[i] = {\n                    payload: bitValue,\n                    bit: i,\n                    topic: \"SB_RR, receive request\"\n                };\n                break;\n            case 2:\n                flow.set(\"SB_IA\", bitValue);\n                outputs[i] = {\n                    payload: bitValue,\n                    bit: i,\n                    topic: \"SB_IA, init accepted\"\n                };\n                break;\n            case 3:\n                flow.set(\"SB_RX_ERR\", bitValue);\n                outputs[i] = {\n                    payload: bitValue,\n                    bit: i,\n                    topic: \"SB_RX_ERR, receive error\"\n                };\n                break;\n            case 4:\n                flow.set(\"SB_RX_BUF_F\", bitValue);\n                outputs[i] = {\n                    payload: bitValue,\n                    bit: i,\n                    topic: \"SB_RX_BUF_F, RX buffer full\"\n                };\n                break;\n            case 5:\n                flow.set(\"SB_TX_BUF_F\", bitValue);\n                outputs[i] = {\n                    payload: bitValue,\n                    bit: i,\n                    topic: \"SB_TX_BUF_F, TX buffer full\"\n                };\n                break;\n            case 6:\n                flow.set(\"SB_GEN_ERR\", bitValue);\n                outputs[i] = {\n                    payload: bitValue,\n                    bit: i,\n                    topic: \"SB_GEN_ERR, general error\"\n                };\n                break;\n            case 7:\n                flow.set(\"SB_RC\", bitValue);\n                outputs[i] = {\n                    payload: bitValue,\n                    bit: i,\n                    topic: \"SB_RC, register communication\"\n                };\n                break;\n            case 8:\n                In_Lenght = In_Lenght + (bitValue * 1);\n                break;\n            case 9:\n                In_Lenght = In_Lenght + (bitValue * 2);\n                break;\n            case 10:\n                In_Lenght = In_Lenght + (bitValue * 4);\n                break;\n            case 11:\n                In_Lenght = In_Lenght + (bitValue * 8);\n                break;\n            case 12:\n                In_Lenght = In_Lenght + (bitValue * 16);\n                break;\n            case 13:\n                In_Lenght = In_Lenght + (bitValue * 32);\n                break;\n            case 14:\n                flow.set(\"SB_BUF_E\", bitValue);\n                outputs[i] = {\n                    payload: bitValue,\n                    bit: i,\n                    topic: \"SB_BUF_E, buffer empty\"\n                };\n                break;\n            case 15:\n                flow.set(\"SB_CTS\", bitValue);\n                outputs[i] = {\n                    payload: bitValue,\n                    bit: i,\n                    topic: \"SB_CTS, clear to send\"\n                };\n                break;\n        }\n        flow.set(\"SB_IL\", In_Lenght);\n    }\n}\n\n// removes the status word from the payload\nmsg.payload = msg.payload.slice(1);\nmsg.topic = \"serial interface in-data\"\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 320,
+        "wires": [
+            [
+                "78589946a3fab172",
+                "b3666f7e0dd7f70f"
+            ]
+        ]
+    },
+    {
+        "id": "032f2fd0afb56acf",
+        "type": "debug",
+        "z": "feb2971f8d04e998",
+        "name": "MB write data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1220,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "ff1f718d1ad8b49a",
+        "type": "debug",
+        "z": "feb2971f8d04e998",
+        "name": "MB write status",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1220,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "b3666f7e0dd7f70f",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Protocol",
+        "func": "// read status bit from flow variable\nlet SB_TA = (flow.get(\"SB_TA\") || 0);\nlet SB_RR = (flow.get(\"SB_RR\") || 0);\nlet SB_IA = (flow.get(\"SB_IA\") || 0);\nlet SB_RX_ERR = (flow.get(\"SB_RX_ERR\") || 0);\nlet SB_RX_BUF_F = (flow.get(\"SB_RX_BUF_F\") || 0);\nlet SB_TX_BUF_F = (flow.get(\"SB_TX_BUF_F\") || 0);\nlet SB_GEN_ERR = (flow.get(\"SB_GEN_ERR\") || 0);\nlet SB_RC = (flow.get(\"SB_RC\") || 0);\nlet SB_BUF_E = (flow.get(\"SB_BUF_E\") || 0);\nlet SB_CTS = (flow.get(\"SB_CTS\") || 0);\nlet SB_IL = (flow.get(\"SB_IL\") || 0);\n\nlet SB_R_TRIG = (flow.get(\"SB_R_TRIG\") || 0);\nlet SB_R_TRIG_ = (flow.get(\"SB_R_TRIG_\") || 0);\n\nlet CB_TR = (flow.get(\"CB_TR\") || 0);\nlet CB_RA = (flow.get(\"CB_RA\") || 0);\nlet CB_IR = (flow.get(\"CB_IR\") || 0);\nlet CB_SC = (flow.get(\"CB_SC\") || 0);\nlet CB_RC = (flow.get(\"CB_RC\") || 0);\nlet CB_OL = (flow.get(\"CB_OL\") || 0);\n\n// protocol, if new data available\nif (SB_RR !== CB_RA){\n    \n    // RTRIG\n    SB_R_TRIG++;\n    flow.set(\"SB_R_TRIG\", SB_R_TRIG);\n\n    if (SB_R_TRIG !== SB_R_TRIG_){\n        // toggle receive ack\n        CB_RA = Number(!CB_RA);\n        flow.set(\"CB_RA\", CB_RA);\n\n        // set Output lengh\n        CB_OL = SB_IL;\n        flow.set(\"CB_OL\", CB_OL);\n\n        // serialize\n        for (let i = 1; i < SB_IL; i++){\n            ;\n        }\n\n        // toggle transmit request\n        CB_TR = Number(!CB_TR);\n        flow.set(\"CB_TR\", CB_TR);        \n    }\n\n    SB_R_TRIG_ = SB_R_TRIG;\n    flow.set(\"SB_R_TRIG_\", SB_R_TRIG_);\n}\n\nmsg.topic = \"serial protocol\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 460,
+        "wires": [
+            [
+                "edeec0a407fee067",
+                "2395f48dfd1d69a5"
+            ]
+        ]
+    },
+    {
+        "id": "321800e09af4a5ac",
+        "type": "comment",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "info": "<ul>\n    <li>Use the Modbus FC3 function to communicate </li>\n    \n    <li> If you're communicating with \n         the WagoAppPlcModbus library, \n         an offset of 20 must be used \n         for the inputs\n    </li>\n    <li> If you're communicating with \n         the plc-modbus-server Docker \n         container, the offset is 0\n    </li>\n</ul>\n",
+        "x": 280,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "9e4dcac7377c4858",
+        "type": "debug",
+        "z": "feb2971f8d04e998",
+        "name": "serial interface in",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1210,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "edeec0a407fee067",
+        "type": "debug",
+        "z": "feb2971f8d04e998",
+        "name": "protocol output",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1220,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "7b3354189e070c22",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 880,
+        "wires": [
+            [
+                "2ca88bfb22232e9e"
+            ]
+        ]
+    },
+    {
+        "id": "2ca88bfb22232e9e",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Test SB_TA",
+        "func": "let value = flow.get(\"SB_TA\") || 0;\nmsg.payload = value;\nmsg.topic = \"SB_TA\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 880,
+        "wires": [
+            [
+                "ab4e1a095b08c0e4",
+                "4dade03bc2fcac3d"
+            ]
+        ]
+    },
+    {
+        "id": "ab4e1a095b08c0e4",
+        "type": "debug",
+        "z": "feb2971f8d04e998",
+        "name": "debug SB",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "6bc969ae13e3b2f6",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 920,
+        "wires": [
+            [
+                "ee08f5e97dd3091d"
+            ]
+        ]
+    },
+    {
+        "id": "ee08f5e97dd3091d",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Test SB_RR",
+        "func": "let value = flow.get(\"SB_RR\") || 0;\nmsg.payload = value;\nmsg.topic = \"SB_RR\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 920,
+        "wires": [
+            [
+                "ab4e1a095b08c0e4",
+                "6b9a49519be07921"
+            ]
+        ]
+    },
+    {
+        "id": "8a038560bedc8d14",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 960,
+        "wires": [
+            [
+                "8dc6083e284c9b7d"
+            ]
+        ]
+    },
+    {
+        "id": "8dc6083e284c9b7d",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Test SB_IA",
+        "func": "let value = flow.get(\"SB_IA\") || 0;\nmsg.payload = value;\nmsg.topic = \"SB_IA\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 960,
+        "wires": [
+            [
+                "ab4e1a095b08c0e4"
+            ]
+        ]
+    },
+    {
+        "id": "e77fd4dfdd212f64",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1000,
+        "wires": [
+            [
+                "001713beebee33d4"
+            ]
+        ]
+    },
+    {
+        "id": "001713beebee33d4",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Test SB_RX_ERR",
+        "func": "let value = flow.get(\"SB_RX_ERR\") || 0;\nmsg.payload = value;\nmsg.topic = \"SB_RX_ERR\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 1000,
+        "wires": [
+            [
+                "ab4e1a095b08c0e4"
+            ]
+        ]
+    },
+    {
+        "id": "e7b82a5288994fce",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1040,
+        "wires": [
+            [
+                "e84d4d0aa0dd7ffe"
+            ]
+        ]
+    },
+    {
+        "id": "e84d4d0aa0dd7ffe",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Test SB_RX_BUF_F",
+        "func": "let value = flow.get(\"SB_RX_BUF_F\") || 0;\nmsg.payload = value;\nmsg.topic = \"SB_RX_BUF_F\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 1040,
+        "wires": [
+            [
+                "ab4e1a095b08c0e4"
+            ]
+        ]
+    },
+    {
+        "id": "81ef2c49569d415d",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1080,
+        "wires": [
+            [
+                "b2373690de7fd5d8"
+            ]
+        ]
+    },
+    {
+        "id": "b2373690de7fd5d8",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Test SB_TX_BUF_F",
+        "func": "let value = flow.get(\"SB_TX_BUF_F\") || 0;\nmsg.payload = value;\nmsg.topic = \"SB_TX_BUF_F\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 1080,
+        "wires": [
+            [
+                "ab4e1a095b08c0e4"
+            ]
+        ]
+    },
+    {
+        "id": "f4c93a36b6e063e3",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1120,
+        "wires": [
+            [
+                "43943f1aef29b898"
+            ]
+        ]
+    },
+    {
+        "id": "43943f1aef29b898",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Test SB_GEN_ERR",
+        "func": "let value = flow.get(\"SB_GEN_ERR\") || 0;\nmsg.payload = value;\nmsg.topic = \"SB_GEN_ERR\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 1120,
+        "wires": [
+            [
+                "ab4e1a095b08c0e4"
+            ]
+        ]
+    },
+    {
+        "id": "1ed12dc16b60d4a1",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1160,
+        "wires": [
+            [
+                "83ef09fb0b2fef64"
+            ]
+        ]
+    },
+    {
+        "id": "83ef09fb0b2fef64",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Test SB_RC",
+        "func": "let value = flow.get(\"SB_RC\") || 0;\nmsg.payload = value;\nmsg.topic = \"SB_RC\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 1160,
+        "wires": [
+            [
+                "ab4e1a095b08c0e4",
+                "ec7425f62ccbab69"
+            ]
+        ]
+    },
+    {
+        "id": "8769d15eaeb84eaa",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 300,
+        "y": 1200,
+        "wires": [
+            [
+                "8161c36ea6dddb5b"
+            ]
+        ]
+    },
+    {
+        "id": "8161c36ea6dddb5b",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Test SB_IL",
+        "func": "let value = flow.get(\"SB_IL\") || 0;\nmsg.payload = value;\nmsg.topic = \"SB_IL\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 1200,
+        "wires": [
+            [
+                "ab4e1a095b08c0e4",
+                "6b9a49519be07921"
+            ]
+        ]
+    },
+    {
+        "id": "56462ca4a8b09c2e",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1240,
+        "wires": [
+            [
+                "6e42a53320bfd00e"
+            ]
+        ]
+    },
+    {
+        "id": "6e42a53320bfd00e",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Test SB_BUF_E",
+        "func": "let value = flow.get(\"SB_BUF_E\") || 0;\nmsg.payload = value;\nmsg.topic = \"SB_BUF_E\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 1240,
+        "wires": [
+            [
+                "ab4e1a095b08c0e4"
+            ]
+        ]
+    },
+    {
+        "id": "3ecb5be2ce98ea47",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1280,
+        "wires": [
+            [
+                "b91f8a0386a64018"
+            ]
+        ]
+    },
+    {
+        "id": "b91f8a0386a64018",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Test SB_CTS",
+        "func": "let value = flow.get(\"SB_CTS\") || 0;\nmsg.payload = value;\nmsg.topic = \"SB_CTS\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 1280,
+        "wires": [
+            [
+                "ab4e1a095b08c0e4"
+            ]
+        ]
+    },
+    {
+        "id": "b00bca5307837c78",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 300,
+        "y": 840,
+        "wires": [
+            [
+                "2ca88bfb22232e9e",
+                "ee08f5e97dd3091d",
+                "8dc6083e284c9b7d",
+                "001713beebee33d4",
+                "e84d4d0aa0dd7ffe",
+                "b2373690de7fd5d8",
+                "43943f1aef29b898",
+                "83ef09fb0b2fef64",
+                "8161c36ea6dddb5b",
+                "6e42a53320bfd00e",
+                "b91f8a0386a64018"
+            ]
+        ]
+    },
+    {
+        "id": "6b9a49519be07921",
+        "type": "debug",
+        "z": "feb2971f8d04e998",
+        "name": "debug Rx",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "4dade03bc2fcac3d",
+        "type": "debug",
+        "z": "feb2971f8d04e998",
+        "name": "debug Tx",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "ec7425f62ccbab69",
+        "type": "debug",
+        "z": "feb2971f8d04e998",
+        "name": "debug RC",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "c8a32440f4240914",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Test CB_TR",
+        "func": "let value = flow.get(\"CB_TR\") || 0;\nmsg.payload = value;\nmsg.topic = \"CB_TR\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 1440,
+        "wires": [
+            [
+                "68fb866f3ac361f7"
+            ]
+        ]
+    },
+    {
+        "id": "320a15f90da839ee",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1440,
+        "wires": [
+            [
+                "c8a32440f4240914"
+            ]
+        ]
+    },
+    {
+        "id": "04b69bd485827f9f",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 300,
+        "y": 1400,
+        "wires": [
+            [
+                "c8a32440f4240914",
+                "6df8faf70819f21c",
+                "20ddf3c630af12b0",
+                "985c651c62869bdc",
+                "12cf296de9096aa4"
+            ]
+        ]
+    },
+    {
+        "id": "68fb866f3ac361f7",
+        "type": "debug",
+        "z": "feb2971f8d04e998",
+        "name": "debug CB",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "6df8faf70819f21c",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Test CB_RA",
+        "func": "let value = flow.get(\"CB_RA\") || 0;\nmsg.payload = value;\nmsg.topic = \"CB_RA\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 1480,
+        "wires": [
+            [
+                "68fb866f3ac361f7"
+            ]
+        ]
+    },
+    {
+        "id": "20ddf3c630af12b0",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Test CB_IR",
+        "func": "let value = flow.get(\"CB_IR\") || 0;\nmsg.payload = value;\nmsg.topic = \"CB_IR\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 1520,
+        "wires": [
+            [
+                "68fb866f3ac361f7"
+            ]
+        ]
+    },
+    {
+        "id": "985c651c62869bdc",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Test CB_RC",
+        "func": "let value = flow.get(\"CB_RC\") || 0;\nmsg.payload = value;\nmsg.topic = \"CB_RC\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 1600,
+        "wires": [
+            [
+                "68fb866f3ac361f7"
+            ]
+        ]
+    },
+    {
+        "id": "7dfd65dbf96985b5",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1480,
+        "wires": [
+            [
+                "6df8faf70819f21c"
+            ]
+        ]
+    },
+    {
+        "id": "3c1ed1f10258c727",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1520,
+        "wires": [
+            [
+                "20ddf3c630af12b0"
+            ]
+        ]
+    },
+    {
+        "id": "861512e3b6d4a773",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1600,
+        "wires": [
+            [
+                "985c651c62869bdc"
+            ]
+        ]
+    },
+    {
+        "id": "12cf296de9096aa4",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Test CB_OL",
+        "func": "let value = flow.get(\"CB_OL\") || 0;\nmsg.payload = value;\nmsg.topic = \"CB_OL\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 1640,
+        "wires": [
+            [
+                "68fb866f3ac361f7"
+            ]
+        ]
+    },
+    {
+        "id": "38f21ca54a680cc6",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1640,
+        "wires": [
+            [
+                "12cf296de9096aa4"
+            ]
+        ]
+    },
+    {
+        "id": "e024867bec611857",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Test CB_SC",
+        "func": "let value = flow.get(\"CB_SC\") || 0;\nmsg.payload = value;\nmsg.topic = \"CB_SC\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 1560,
+        "wires": [
+            [
+                "68fb866f3ac361f7"
+            ]
+        ]
+    },
+    {
+        "id": "6ed17fb5169a633e",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1560,
+        "wires": [
+            [
+                "e024867bec611857"
+            ]
+        ]
+    },
+    {
+        "id": "1083eea75f455fe2",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1740,
+        "wires": [
+            [
+                "50cd59fbbb5ab511"
+            ]
+        ]
+    },
+    {
+        "id": "50cd59fbbb5ab511",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "1, ON",
+        "func": "msg.payload = [0x0001];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 1740,
+        "wires": [
+            [
+                "7da58f5808211217"
+            ]
+        ]
+    },
+    {
+        "id": "270d90836fa32e10",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "0, OFF",
+        "func": "msg.payload = [0x0000];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 1780,
+        "wires": [
+            [
+                "7da58f5808211217"
+            ]
+        ]
+    },
+    {
+        "id": "1b76bb6b73a72594",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1780,
+        "wires": [
+            [
+                "270d90836fa32e10"
+            ]
+        ]
+    },
+    {
+        "id": "7da58f5808211217",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Cmd CB_TR (Transmit request)",
+        "func": "let bitValue = Number(msg.payload);\nflow.set(\"CB_TR\", bitValue);\nmsg.payload = bitValue;\nmsg.topic = \"CB_TR\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 1740,
+        "wires": [
+            [
+                "28e623a2f2674ca6"
+            ]
+        ]
+    },
+    {
+        "id": "28e623a2f2674ca6",
+        "type": "debug",
+        "z": "feb2971f8d04e998",
+        "name": "debug TR",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 1740,
+        "wires": []
+    },
+    {
+        "id": "63ad1ef42b518f5d",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1880,
+        "wires": [
+            [
+                "0460946a48c0ad7a"
+            ]
+        ]
+    },
+    {
+        "id": "0460946a48c0ad7a",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "1, ON",
+        "func": "msg.payload = [0x0001];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 1880,
+        "wires": [
+            [
+                "300dce9d3176420a"
+            ]
+        ]
+    },
+    {
+        "id": "e7f3241bdf4cd872",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "0, OFF",
+        "func": "msg.payload = [0x0000];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 1920,
+        "wires": [
+            [
+                "300dce9d3176420a"
+            ]
+        ]
+    },
+    {
+        "id": "986d63a6db9e027c",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1920,
+        "wires": [
+            [
+                "e7f3241bdf4cd872"
+            ]
+        ]
+    },
+    {
+        "id": "300dce9d3176420a",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Cmd CB_RA (Receive accepted)",
+        "func": "let bitValue = Number(msg.payload);\nflow.set(\"CB_RA\", bitValue);\nmsg.payload = bitValue;\nmsg.topic = \"CB_RA\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 1880,
+        "wires": [
+            [
+                "a7c86080c2834a18"
+            ]
+        ]
+    },
+    {
+        "id": "a7c86080c2834a18",
+        "type": "debug",
+        "z": "feb2971f8d04e998",
+        "name": "debug RA",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 1880,
+        "wires": []
+    },
+    {
+        "id": "70e58e42d579affc",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 2020,
+        "wires": [
+            [
+                "31dc25bb1bf858d2"
+            ]
+        ]
+    },
+    {
+        "id": "31dc25bb1bf858d2",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "1, ON",
+        "func": "msg.payload = [0x0001];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 2020,
+        "wires": [
+            [
+                "fd62dec82953cb6c"
+            ]
+        ]
+    },
+    {
+        "id": "eeace6564d3d80ac",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "0, OFF",
+        "func": "msg.payload = [0x0000];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 2060,
+        "wires": [
+            [
+                "fd62dec82953cb6c"
+            ]
+        ]
+    },
+    {
+        "id": "789231a271aa0306",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 2060,
+        "wires": [
+            [
+                "eeace6564d3d80ac"
+            ]
+        ]
+    },
+    {
+        "id": "fd62dec82953cb6c",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Cmd CB_IR (Init request)",
+        "func": "let bitValue = Number(msg.payload);\nflow.set(\"CB_IR\", bitValue);\nmsg.payload = bitValue;\nmsg.topic = \"CB_IR\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 2020,
+        "wires": [
+            [
+                "ee4ddb62fd2751ea"
+            ]
+        ]
+    },
+    {
+        "id": "ee4ddb62fd2751ea",
+        "type": "debug",
+        "z": "feb2971f8d04e998",
+        "name": "debug IR",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 2020,
+        "wires": []
+    },
+    {
+        "id": "6e4ad2635c179147",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 2160,
+        "wires": [
+            [
+                "2fb85cf9dcaaf097"
+            ]
+        ]
+    },
+    {
+        "id": "2fb85cf9dcaaf097",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "1, ON",
+        "func": "msg.payload = [0x0001];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 2160,
+        "wires": [
+            [
+                "e96f44b631d967c2"
+            ]
+        ]
+    },
+    {
+        "id": "415b62a971a5fd8c",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "0, OFF",
+        "func": "msg.payload = [0x0000];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 2200,
+        "wires": [
+            [
+                "e96f44b631d967c2"
+            ]
+        ]
+    },
+    {
+        "id": "228d59cc0342bd78",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 2200,
+        "wires": [
+            [
+                "415b62a971a5fd8c"
+            ]
+        ]
+    },
+    {
+        "id": "e96f44b631d967c2",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Cmd CB_SC (Send continous)",
+        "func": "let bitValue = Number(msg.payload);\nflow.set(\"CB_SC\", bitValue);\nmsg.payload = bitValue;\nmsg.topic = \"CB_SC\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 2160,
+        "wires": [
+            [
+                "9b7f3e6d9a84a10e"
+            ]
+        ]
+    },
+    {
+        "id": "9b7f3e6d9a84a10e",
+        "type": "debug",
+        "z": "feb2971f8d04e998",
+        "name": "debug SC",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 2160,
+        "wires": []
+    },
+    {
+        "id": "49e7c6ac1bbdc608",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 2300,
+        "wires": [
+            [
+                "a7bbcf4239dce182"
+            ]
+        ]
+    },
+    {
+        "id": "a7bbcf4239dce182",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "1, ON",
+        "func": "msg.payload = [0x0001];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 2300,
+        "wires": [
+            [
+                "9be4270c3d93d8c2"
+            ]
+        ]
+    },
+    {
+        "id": "6188640425d35514",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "0, OFF",
+        "func": "msg.payload = [0x0000];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 2340,
+        "wires": [
+            [
+                "9be4270c3d93d8c2"
+            ]
+        ]
+    },
+    {
+        "id": "5b10e4896041e2aa",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 2340,
+        "wires": [
+            [
+                "6188640425d35514"
+            ]
+        ]
+    },
+    {
+        "id": "9be4270c3d93d8c2",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Cmd CB_RC (Register communication)",
+        "func": "let bitValue = Number(msg.payload);\nflow.set(\"CB_RC\", bitValue);\nmsg.payload = bitValue;\nmsg.topic = \"CB_RC\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 2300,
+        "wires": [
+            [
+                "772ba85698496b92"
+            ]
+        ]
+    },
+    {
+        "id": "772ba85698496b92",
+        "type": "debug",
+        "z": "feb2971f8d04e998",
+        "name": "debug RC",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 2300,
+        "wires": []
+    },
+    {
+        "id": "e6f99baa8766350b",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1820,
+        "wires": [
+            [
+                "c0023ea9498dc203"
+            ]
+        ]
+    },
+    {
+        "id": "c0023ea9498dc203",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Toggle TR",
+        "func": "// read status bit from flow variable\nlet CB_TR = flow.get(\"CB_TR\") || 0;\n\nCB_TR = Number(!CB_TR);\n\nflow.set(\"CB_TR\", CB_TR);\n\nmsg.payload = CB_TR;\nmsg.topic = \"CB_TR\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 1820,
+        "wires": [
+            [
+                "28e623a2f2674ca6"
+            ]
+        ]
+    },
+    {
+        "id": "a6e95783dadf6a08",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Toggle RA",
+        "func": "// read status bit from flow variable\nlet CB_RA = flow.get(\"CB_RA\") || 0;\n\nCB_RA = Number(!CB_RA);\n\nflow.set(\"CB_RA\", CB_RA);\n\nmsg.payload = CB_RA;\nmsg.topic = \"CB_RA\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 1960,
+        "wires": [
+            [
+                "a7c86080c2834a18"
+            ]
+        ]
+    },
+    {
+        "id": "40f017c69364e1fd",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 1960,
+        "wires": [
+            [
+                "a6e95783dadf6a08"
+            ]
+        ]
+    },
+    {
+        "id": "8dd98ab805eb6aea",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Toggle IR",
+        "func": "// read status bit from flow variable\nlet CB_IR = flow.get(\"CB_IR\") || 0;\n\nCB_IR = Number(!CB_IR);\n\nflow.set(\"CB_IR\", CB_IR);\n\nmsg.payload = CB_IR;\nmsg.topic = \"CB_IR\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 2100,
+        "wires": [
+            [
+                "ee4ddb62fd2751ea"
+            ]
+        ]
+    },
+    {
+        "id": "96e0bcc0d2fdd795",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 2100,
+        "wires": [
+            [
+                "8dd98ab805eb6aea"
+            ]
+        ]
+    },
+    {
+        "id": "960b0baaf3fbc62d",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Toggle SC",
+        "func": "// read status bit from flow variable\nlet CB_SC = flow.get(\"CB_SC\") || 0;\n\nCB_SC = Number(!CB_SC);\n\nflow.set(\"CB_SC\", CB_SC);\n\nmsg.payload = CB_SC;\nmsg.topic = \"CB_SC\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 2240,
+        "wires": [
+            [
+                "9b7f3e6d9a84a10e"
+            ]
+        ]
+    },
+    {
+        "id": "83598222d2b4ccd1",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 2240,
+        "wires": [
+            [
+                "960b0baaf3fbc62d"
+            ]
+        ]
+    },
+    {
+        "id": "1fdd1e56134c5163",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Toggle RC",
+        "func": "// read status bit from flow variable\nlet CB_RC = flow.get(\"CB_RC\") || 0;\n\nCB_RC = Number(!CB_RC);\n\nflow.set(\"CB_RC\", CB_RC);\n\nmsg.payload = CB_RC;\nmsg.topic = \"CB_RC\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 2380,
+        "wires": [
+            [
+                "772ba85698496b92"
+            ]
+        ]
+    },
+    {
+        "id": "7f05d963c4b805bb",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 2380,
+        "wires": [
+            [
+                "1fdd1e56134c5163"
+            ]
+        ]
+    },
+    {
+        "id": "1abe9ea316ef5532",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Test Trigger",
+        "func": "let value = flow.get(\"SB_R_TRIG\") || 0;\nmsg.payload = value;\nmsg.topic = \"SB_R_TRIG\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 2440,
+        "wires": [
+            [
+                "d251a31176eba27f"
+            ]
+        ]
+    },
+    {
+        "id": "e9a9bd404231a16d",
+        "type": "inject",
+        "z": "feb2971f8d04e998",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 2440,
+        "wires": [
+            [
+                "1abe9ea316ef5532",
+                "4f8ff4e70f7d195a"
+            ]
+        ]
+    },
+    {
+        "id": "d251a31176eba27f",
+        "type": "debug",
+        "z": "feb2971f8d04e998",
+        "name": "debug Trigger",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1220,
+        "y": 2440,
+        "wires": []
+    },
+    {
+        "id": "5544591839254995",
+        "type": "debug",
+        "z": "feb2971f8d04e998",
+        "name": "debug Trigger_",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1220,
+        "y": 2480,
+        "wires": []
+    },
+    {
+        "id": "4f8ff4e70f7d195a",
+        "type": "function",
+        "z": "feb2971f8d04e998",
+        "name": "Test Trigger_",
+        "func": "let value = flow.get(\"SB_R_TRIG_\") || 0;\nmsg.payload = value;\nmsg.topic = \"SB_R_TRIG_\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 2480,
+        "wires": [
+            [
+                "5544591839254995"
+            ]
+        ]
+    }
+]
